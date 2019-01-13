@@ -1,0 +1,30 @@
+<div *ngIf="!authService.authenticated">
+  <p>Приветствуем Вас на официальной странице лабораторной работы №4! Чтобы получить full user experience от
+    использования
+    нашего сайта вам нужно войти. В случае успешной попытки входа/регистрации с указанным логином и паролем
+    Вы получите доступ к уникальной системе проверки попадания точки в область, реализованной согласно варианту №28709.</p>
+  <div class="alert alert-danger" [hidden]="!errorMsg">
+    {{errorMsg}}
+  </div>
+  <span><b>Логин</b></span>
+  <hr/>
+  <input type="text" pInputText [(ngModel)]="credentials.username"/>
+  <hr/>
+  <span><b>Пароль</b></span>
+  <hr/>
+  <input type="password" pInputText [(ngModel)]="credentials.password"/>
+  <hr/>
+  <button pButton type="button" (click)="login()" label="Войти"></button>
+  <button id="btn-register" pButton type="button" (click)="register()" label="Зарегистрироваться"></button>
+
+</div>
+<div *ngIf="authService.authenticated">
+  <p>{{authService.credentials.username}}, поздравляем Вас с удачной попыткой входа! Добро пожаловать в Лабораторную
+    работу №4.</p>
+  <div>
+    <a [routerLink]="['/check']">Перейти к проверке попадания точки в область</a>
+  </div>
+  <div>
+    <a [routerLink]="['/login']" (click)="logout()">Выйти</a>
+  </div>
+</div>

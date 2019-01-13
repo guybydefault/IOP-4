@@ -1,0 +1,17 @@
+#resultsTable th {
+    border: 2px solid #dee2e6;
+}
+
+table.empty tbody td {
+    border-color: rgba(0, 0, 0, 0);
+}
+
+.selected-btn {
+    background-color: #167ffb;
+    color: white;
+}
+
+.ui-sliderentry {
+    text-align: center;
+
+}

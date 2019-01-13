@@ -1,0 +1,28 @@
+<h3>Результаты проверок</h3>
+<p>Первой отображается последняя выполненная проверка. В таблицу попадают все проверки: и через график, и через форму.
+  Плюс в столбце "Результат" означает то, что точка находится в области, в противном случае она находится вне
+  области.</p>
+
+<table id="resultsTable" class="table text-center table-bordered" *ngIf="error === null">
+  <thead>
+  <tr>
+    <th>X</th>
+    <th>Y</th>
+    <th>R</th>
+    <th>В области</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let check of checks" class="{{check.inArea ? 'table-success' : 'table-danger' }}">
+    <td>{{check.x}}</td>
+    <td>{{check.y}}</td>
+    <td>{{check.r}}</td>
+    <td>{{check.inArea ? '+' : '-'}}</td>
+  </tr>
+  </tbody>
+</table>
+<div class="alert alert-danger" *ngIf="error !== null">
+  {{error}}
+</div>
+
+

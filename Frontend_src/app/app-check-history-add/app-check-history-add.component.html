@@ -1,0 +1,23 @@
+<form id="form">
+  <fieldset class="form-group" title="Выберите значение X">
+    <legend id="x-legend">Значение X [-3; 5]</legend>
+    <p-radioButton *ngFor="let xV of xValues" label="{{xV}}" name="x" value="{{xV}}"
+                   [(ngModel)]="x">{{x}}</p-radioButton>
+    <br/>
+    <span>Выбранное значение X: {{x}}</span>
+  </fieldset>
+  <fieldset class="form-group" title="Введите значение Y">
+    <legend>Значение Y (-5; 3)</legend>
+    <label for="y-input">Введите Y: </label>
+    <input id="y-input" name="y" type="text" pInputText [(ngModel)]="y"/>
+  </fieldset>
+  <fieldset class="form-group" title="Выберите значение R">
+    <legend>Значение R</legend>
+    <p-radioButton *ngFor="let rV of rValues" label="{{rV}}" name="r" value="{{rV}}"
+                   [(ngModel)]="r" (onClick)="updateRadiusValue($event)">{{r}}</p-radioButton>
+  </fieldset>
+  <p-button (onClick)="check()" label="Проверить точку"></p-button>
+  <div id="validation-alert-container" class="alert alert-danger" *ngIf="errors.length!== 0">
+    <div *ngFor="let error of errors">{{error}}</div>
+  </div>
+</form>

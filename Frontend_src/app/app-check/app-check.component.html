@@ -1,0 +1,10 @@
+<div class="row mt-3">
+  <app-app-check-plot #plot (chartCheckEvent)="input.onChartClick($event)"></app-app-check-plot>
+  <div class="col-sm text-center">
+    <a [routerLink]="['/']">Вернуться на страницу авторизации</a>
+    <app-check-history-add #input (checkAddedEvent)="history.loadChecksAndRefresh($event)" (radiusChangedEvent)="plot.reload(history.checks, $event)"></app-check-history-add>
+  </div>
+</div>
+<div class="row">
+  <app-check-history #history (checkReloadEvent)="plot.reload($event, input.r)"></app-check-history>
+</div>
